@@ -1,9 +1,9 @@
 const encryptRSA = document.querySelector("#encryptRSA");
 encryptRSA.querySelector(".getResult").onclick = (event) => {
   event.preventDefault();
-  let n = encryptRSA.querySelector("#encryptRSA-n").value;
-  let e = encryptRSA.querySelector("#encryptRSA-e").value;
-  let m = encryptRSA.querySelector("#encryptRSA-m").value;
+  let n = +encryptRSA.querySelector("#encryptRSA-n").value;
+  let e = +encryptRSA.querySelector("#encryptRSA-e").value;
+  let m = +encryptRSA.querySelector("#encryptRSA-m").value;
 
   if (!(n && e && m)) {
     alert("Введите все значения");
@@ -21,9 +21,9 @@ encryptRSA.querySelector(".getResult").onclick = (event) => {
 const signRSA = document.querySelector("#signRSA");
 signRSA.querySelector(".getResult").onclick = (event) => {
   event.preventDefault();
-  let n = signRSA.querySelector("#signRSA-n").value;
-  let d = signRSA.querySelector("#signRSA-d").value;
-  let m = signRSA.querySelector("#signRSA-m").value;
+  let n = +signRSA.querySelector("#signRSA-n").value;
+  let d = +signRSA.querySelector("#signRSA-d").value;
+  let m = +signRSA.querySelector("#signRSA-m").value;
 
   if (!(n && d && m)) {
     alert("Введите все значения");
@@ -40,9 +40,9 @@ signRSA.querySelector(".getResult").onclick = (event) => {
 const decryptRSA = document.querySelector("#decryptRSA");
 decryptRSA.querySelector(".getResult").onclick = (event) => {
   event.preventDefault();
-  let n = decryptRSA.querySelector("#decryptRSA-n").value;
-  let e = decryptRSA.querySelector("#decryptRSA-e").value;
-  let c = decryptRSA.querySelector("#decryptRSA-c").value;
+  let n = +decryptRSA.querySelector("#decryptRSA-n").value;
+  let e = +decryptRSA.querySelector("#decryptRSA-e").value;
+  let c = +decryptRSA.querySelector("#decryptRSA-c").value;
 
   if (!(n && e && c)) {
     alert("Введите все значения");
@@ -72,11 +72,11 @@ decryptRSA.querySelector(".getResult").onclick = (event) => {
 const encryptElGamal = document.querySelector("#encryptElGamal");
 encryptElGamal.querySelector(".getResult").onclick = (event) => {
   event.preventDefault();
-  let p = encryptElGamal.querySelector("#encryptElGamal-p").value;
-  let g = encryptElGamal.querySelector("#encryptElGamal-g").value;
-  let y = encryptElGamal.querySelector("#encryptElGamal-y").value;
-  let k = encryptElGamal.querySelector("#encryptElGamal-k").value;
-  let m = encryptElGamal.querySelector("#encryptElGamal-m").value;
+  let p = +encryptElGamal.querySelector("#encryptElGamal-p").value;
+  let g = +encryptElGamal.querySelector("#encryptElGamal-g").value;
+  let y = +encryptElGamal.querySelector("#encryptElGamal-y").value;
+  let k = +encryptElGamal.querySelector("#encryptElGamal-k").value;
+  let m = +encryptElGamal.querySelector("#encryptElGamal-m").value;
 
   if (!(p && g && y && k && m)) {
     alert("Введите все значения");
@@ -104,12 +104,12 @@ encryptElGamal.querySelector(".getResult").onclick = (event) => {
 const signElGamal = document.querySelector("#signElGamal");
 signElGamal.querySelector(".getResult").onclick = (event) => {
   event.preventDefault();
-  let p = signElGamal.querySelector("#signElGamal-p").value;
-  let g = signElGamal.querySelector("#signElGamal-g").value;
-  let y = signElGamal.querySelector("#signElGamal-y").value;
-  let k = signElGamal.querySelector("#signElGamal-k").value;
-  let x = signElGamal.querySelector("#signElGamal-x").value;
-  let m = signElGamal.querySelector("#signElGamal-m").value;
+  let p = +signElGamal.querySelector("#signElGamal-p").value;
+  let g = +signElGamal.querySelector("#signElGamal-g").value;
+  let y = +signElGamal.querySelector("#signElGamal-y").value;
+  let k = +signElGamal.querySelector("#signElGamal-k").value;
+  let x = +signElGamal.querySelector("#signElGamal-x").value;
+  let m = +signElGamal.querySelector("#signElGamal-m").value;
 
   if (!(p && g && y && k && x && m)) {
     alert("Введите все значения");
@@ -152,9 +152,9 @@ function createHTMLFromCalculations(calculations) {
 const modularExp = document.querySelector("#modularExp");
 modularExp.querySelector(".getResult").onclick = (event) => {
   event.preventDefault();
-  let base = modularExp.querySelector("#modularExp-base").value;
-  let exponent = modularExp.querySelector("#modularExp-exponent").value;
-  let mod = modularExp.querySelector("#modularExp-mod").value;
+  let base = +modularExp.querySelector("#modularExp-base").value;
+  let exponent = +modularExp.querySelector("#modularExp-exponent").value;
+  let mod = +modularExp.querySelector("#modularExp-mod").value;
 
   
   if (!(base && exponent && mod)) {
@@ -162,12 +162,21 @@ modularExp.querySelector(".getResult").onclick = (event) => {
     return;
   }
 
-  let {result, calculations} = modularExponentiation(base, exponent, mod);
 
-  let solutionHTML = createHTMLFromCalculations(calculations);
+  let result, solutionHTML; 
+
+  if (exponent == -1){
+    console.log('pencil')
+    result = getMultiplicativeInverse(base, mod);
+  } else {
+    plusEx = modularExponentiation(base, exponent, mod);
+    result = plusEx.result;
+    solutionHTML = createHTMLFromCalculations(plusEx.calculations);
+  }
+
 
   modularExp.querySelector(".result").querySelector("span").textContent = result;
-  modularExp.querySelector(".solution").innerHTML = solutionHTML;
+  modularExp.querySelector(".solution").innerHTML = solutionHTML ?? '';
 };
 
 function createHTMLFromCalculations(calculations) {
