@@ -60,6 +60,34 @@
       <label class="result">Результат: <span></span></label>
       <div class="solution"></div>
     </form>
+    <h2>Зашифровать сообщение по схеме Эль-Гамаля</h2>
+    <form id="encryptElGamal">
+      <div class="labels-wrapper">
+        <div class="labels-wrapper__label"><label>Открытый ключ: p <input id="encryptElGamal-p" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Открытый ключ: g <input id="encryptElGamal-g" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Открытый ключ: y <input id="encryptElGamal-y" type="number" /></label></div>
+        <div class="labels-wrapper__label"><label>Случайный параметр : k <input id="encryptElGamal-k" type="number" /></label></div>
+        <div class="labels-wrapper__label"><label>Cообщение : M <input id="encryptElGamal-m" type="number" /></label></div>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result">Результат: <span></span></label>
+      <div class="solution"></div>
+    </form>
+    <h2>Вычислить подпись по схеме Эль-Гамаля</h2>
+    <form id="signElGamal">
+      <div class="labels-wrapper">
+        <div class="labels-wrapper__label"><label>Открытый ключ: p <input id="signElGamal-p" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Открытый ключ: g <input id="signElGamal-g" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Открытый ключ: y <input id="signElGamal-y" type="number" /></label></div>
+        <div class="labels-wrapper__label"><label>Секретный ключ : x <input id="signElGamal-x" type="number" /></label></div>
+        <div class="labels-wrapper__label"><label>Случайный параметр : k <input id="signElGamal-k" type="number" /></label></div>
+        <div class="labels-wrapper__label"><label>Cообщение : M <input id="signElGamal-m" type="number" /></label></div>
+
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result">Результат: <span></span></label>
+      <div class="solution"></div>
+    </form>
   </body>
   <script src="main.js"></script>
 </html>

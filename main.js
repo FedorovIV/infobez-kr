@@ -61,6 +61,73 @@ decryptRSA.querySelector(".getResult").onclick = (event) => {
   decryptRSA.querySelector(".solution").innerHTML = solutionHTML;
 };
 
+const encryptElGamal = document.querySelector("#encryptElGamal");
+encryptElGamal.querySelector(".getResult").onclick = (event) => {
+  event.preventDefault();
+  let p = encryptElGamal.querySelector("#encryptElGamal-p").value;
+  let g = encryptElGamal.querySelector("#encryptElGamal-g").value;
+  let y = encryptElGamal.querySelector("#encryptElGamal-y").value;
+  let k = encryptElGamal.querySelector("#encryptElGamal-k").value;
+  let m = encryptElGamal.querySelector("#encryptElGamal-m").value;
+
+  if (!(p && g && y && k && m)) alert("Введите все значения");
+
+  let solutionHTML = "";
+
+  //Ищем a
+  let {result:a, calculations:calculationsA} = modularExponentiation(g,k,p);
+  solutionHTML += `a = g<sup>k</sup><i>mod</i>p<br>`
+  solutionHTML += createHTMLFromCalculations(calculationsA);
+  solutionHTML += `a = ${a}<br>`
+  //Ищем b
+  solutionHTML += `b = y<sup>k</sup>*M<i>mod</i>p<br>`
+  let {result:firstPartB, calculations:calculationsB} = modularExponentiation(y,k,p);
+  solutionHTML += 'Сначала найдём y<sup>k</sup><i>mod</i>p<br>'
+  solutionHTML += createHTMLFromCalculations(calculationsB);
+  let b = (firstPartB * m) % p;
+  solutionHTML += `b = ${firstPartB}*${m}mod${p} = ${b}`
+
+  encryptElGamal.querySelector(".result").querySelector("span").textContent = `a = ${a} b = ${b}`;
+  encryptElGamal.querySelector(".solution").innerHTML = solutionHTML;
+};
+
+const signElGamal = document.querySelector("#signElGamal");
+signElGamal.querySelector(".getResult").onclick = (event) => {
+  event.preventDefault();
+  let p = signElGamal.querySelector("#signElGamal-p").value;
+  let g = signElGamal.querySelector("#signElGamal-g").value;
+  let y = signElGamal.querySelector("#signElGamal-y").value;
+  let k = signElGamal.querySelector("#signElGamal-k").value;
+  let x = signElGamal.querySelector("#signElGamal-x").value;
+  let m = signElGamal.querySelector("#signElGamal-m").value;
+
+  if (!(p && g && y && k && x && m)) alert("Введите все значения");
+
+  let solutionHTML = "";
+
+  //Ищем a
+  let {result:a, calculations:calculationsA} = modularExponentiation(g,k,p);
+  solutionHTML += `a = g<sup>k</sup><i>mod</i>p<br>`
+  solutionHTML += createHTMLFromCalculations(calculationsA);
+  solutionHTML += `a = ${a}<br>`
+
+  //Ищем b
+  solutionHTML += `b = (m-xa)*k<sup>-1</sup><i>mod</i>(p-1)<br>`
+  let inverseK = getMultiplicativeInverse(k, p-1)
+  solutionHTML += `(m-xa)*k<sup>-1</sup><i>mod</i>(p-1) = ${m-x*a}*k<sup>-1</sup><i>mod</i>(p-1)<br>`
+  solutionHTML += `k<sup>-1</sup><i>mod</i>(p-1) = ${inverseK}<br>`;
+  let firstPartB = (m-x*a)*inverseK;
+  solutionHTML+= `(m-x*a)*k<sup>-1</sup>=${firstPartB}<br>`;
+
+  let b = ((firstPartB % (p-1)) + (p-1)) % (p-1);
+  solutionHTML+= `${firstPartB}<i>mod</i>(p-1)=${b}<br>`;
+  solutionHTML+= `b = ${b}<br>`;
+
+
+  signElGamal.querySelector(".result").querySelector("span").textContent = `a = ${a} b = ${b}`;
+  signElGamal.querySelector(".solution").innerHTML = solutionHTML;
+};
+
 function createHTMLFromCalculations(calculations) {
   let result = "";
   calculations.forEach((element) => {
@@ -100,8 +167,6 @@ function getPrimeDivisors(n) {
   }
 }
 
-function getMultiplicativeInverse() {}
-
 function extendedGCD(a, b) {
   if (b === 0) {
     return { gcd: a, x: 1, y: 0 };
@@ -126,3 +191,4 @@ function getMultiplicativeInverse(a, n) {
   // x может быть отрицательным, поэтому добавляем n, чтобы получить положительный результат.
   return ((x % n) + n) % n;
 }
+
