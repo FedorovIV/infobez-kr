@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Восстановление значений
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                const savedValue = +localStorage.getItem(input.id);
+                if (savedValue) {
+                    input.value = savedValue;
+                }
+            });
+
+            // Сохранение значений
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    localStorage.setItem(input.id, input.value);
+                });
+            });
+        });
+    </script>
+  </head>
+  <body>
+    <h1>Вторая контрольная работа по информационной безопасности</h1>
+    <h2>Зашифровать сообщение по схеме RSA</h2>
+    <form id="encryptRSA">
+      <div class="labels-wrapper">
+        <div class="labels-wrapper__label"><label>Открытый ключ: n <input id="encryptRSA-n" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Открытый ключ: e <input id="encryptRSA-e" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Сообщение: m  <input id="encryptRSA-m"type="number" /></label></div>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result">𝑐 = 𝑚<sup>𝑒</sup>𝑚𝑜𝑑𝑛 = <span></span></label>
+      <div class="solution"></div>
+    </form>
+    <h2>Подписать сообщение по схеме RSA</h2>
+    <form id="signRSA">
+      <div class="labels-wrapper">
+        <div class="labels-wrapper__label"><label>Закрытый ключ: n <input id="signRSA-n" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Закрытый ключ: d <input id="signRSA-d" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Сообщение: m  <input id="signRSA-m"type="number" /></label></div>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result">s = 𝑚<sup>d</sup>𝑚𝑜𝑑𝑛 = <span></span></label>
+      <div class="solution"></div>
+    </form>
+    <h2>Расшифровать сообщение по схеме RSA</h2>
+    <form id="decryptRSA">
+      <div class="labels-wrapper">
+        <div class="labels-wrapper__label"><label>Открытый ключ: n <input id="decryptRSA-n" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Открытый ключ: e <input id="decryptRSA-e" type="number" /></label> </div>
+        <div class="labels-wrapper__label"><label>Зашифрованное сообщение: c  <input id="decryptRSA-c"type="number" /></label></div>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result">Результат: <span></span></label>
+      <div class="solution"></div>
+    </form>
+  </body>
+  <script src="main.js"></script>
+</html>
