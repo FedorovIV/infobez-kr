@@ -149,6 +149,35 @@ function createHTMLFromCalculations(calculations) {
   return result;
 }
 
+const modularExp = document.querySelector("#modularExp");
+modularExp.querySelector(".getResult").onclick = (event) => {
+  event.preventDefault();
+  let base = modularExp.querySelector("#modularExp-base").value;
+  let exponent = modularExp.querySelector("#modularExp-exponent").value;
+  let mod = modularExp.querySelector("#modularExp-mod").value;
+
+  
+  if (!(base && exponent && mod)) {
+    alert("Введите все значения");
+    return;
+  }
+
+  let {result, calculations} = modularExponentiation(base, exponent, mod);
+
+  let solutionHTML = createHTMLFromCalculations(calculations);
+
+  modularExp.querySelector(".result").querySelector("span").textContent = result;
+  modularExp.querySelector(".solution").innerHTML = solutionHTML;
+};
+
+function createHTMLFromCalculations(calculations) {
+  let result = "";
+  calculations.forEach((element) => {
+    result += element + "<br>";
+  });
+  return result;
+}
+
 function modularExponentiation(base, exponent, mod) {
   let result = 1;
   let calculations = [];
