@@ -5,7 +5,10 @@ encryptRSA.querySelector(".getResult").onclick = (event) => {
   let e = encryptRSA.querySelector("#encryptRSA-e").value;
   let m = encryptRSA.querySelector("#encryptRSA-m").value;
 
-  if (!(n && e && m)) alert("Введите все значения");
+  if (!(n && e && m)) {
+    alert("Введите все значения");
+    return;
+  }
 
   let { result, calculations } = modularExponentiation(m, e, n);
 
@@ -22,7 +25,10 @@ signRSA.querySelector(".getResult").onclick = (event) => {
   let d = signRSA.querySelector("#signRSA-d").value;
   let m = signRSA.querySelector("#signRSA-m").value;
 
-  if (!(n && d && m)) alert("Введите все значения");
+  if (!(n && d && m)) {
+    alert("Введите все значения");
+    return;
+  }
 
   let { result, calculations } = modularExponentiation(m, d, n);
 
@@ -38,8 +44,10 @@ decryptRSA.querySelector(".getResult").onclick = (event) => {
   let e = decryptRSA.querySelector("#decryptRSA-e").value;
   let c = decryptRSA.querySelector("#decryptRSA-c").value;
 
-  if (!(n && e && c)) alert("Введите все значения");
-
+  if (!(n && e && c)) {
+    alert("Введите все значения");
+    return;
+  }
   let solutionHTML = "";
   //Раскладываем n на два простых числа
   let { p, q } = getPrimeDivisors(n);
@@ -70,8 +78,10 @@ encryptElGamal.querySelector(".getResult").onclick = (event) => {
   let k = encryptElGamal.querySelector("#encryptElGamal-k").value;
   let m = encryptElGamal.querySelector("#encryptElGamal-m").value;
 
-  if (!(p && g && y && k && m)) alert("Введите все значения");
-
+  if (!(p && g && y && k && m)) {
+    alert("Введите все значения");
+    return;
+  }
   let solutionHTML = "";
 
   //Ищем a
@@ -101,7 +111,10 @@ signElGamal.querySelector(".getResult").onclick = (event) => {
   let x = signElGamal.querySelector("#signElGamal-x").value;
   let m = signElGamal.querySelector("#signElGamal-m").value;
 
-  if (!(p && g && y && k && x && m)) alert("Введите все значения");
+  if (!(p && g && y && k && x && m)) {
+    alert("Введите все значения");
+    return;
+  }
 
   let solutionHTML = "";
 
