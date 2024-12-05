@@ -38,26 +38,43 @@
       <div class="labels-wrapper">
         <div class="labels-wrapper__label">
           <label
-            >Координата x<input id="checkPointForGroup-x" type="number"
+            >Координата x<input
+              id="checkPointForGroup-x"
+              type="number"
+              min="-1000000"
           /></label>
         </div>
         <div class="labels-wrapper__label">
           <label
-            >Координата y<input id="checkPointForGroup-y" type="number"
+            >Координата y<input
+              id="checkPointForGroup-y"
+              type="number"
+              min="-1000000"
           /></label>
         </div>
         <div class="labels-wrapper__label">
           <label
-            >Параметр кривой a<input id="checkPointForGroup-a" type="number"
+            >Параметр кривой a<input
+              id="checkPointForGroup-a"
+              type="number"
+              min="-1000000"
           /></label>
         </div>
         <div class="labels-wrapper__label">
           <label
-            >Параметр кривой b<input id="checkPointForGroup-b" type="number"
+            >Параметр кривой b<input
+              id="checkPointForGroup-b"
+              type="number"
+              min="-1000000"
           /></label>
         </div>
         <div class="labels-wrapper__label">
-          <label>Поле p<input id="checkPointForGroup-p" type="number" /></label>
+          <label
+            >Поле p<input
+              id="checkPointForGroup-p"
+              type="number"
+              min="-1000000"
+          /></label>
         </div>
       </div>
       <div><button class="getResult" type="submit">Рассчитать</button></div>
@@ -74,36 +91,72 @@
     <form id="gost">
       <div class="labels-wrapper">
         <div class="labels-wrapper__label">
-          <label>Сообщение m<input id="gost-m" type="number" /></label>
-        </div>
-        <div class="labels-wrapper__label">
-          <label>Параметр a<input id="gost-a" type="number" /></label>
-        </div>
-        <div class="labels-wrapper__label">
-          <label>Параметр b<input id="gost-b" type="number" /></label>
-        </div>
-        <div class="labels-wrapper__label">
-          <label>Поле p<input id="gost-p" type="number" /></label>
-        </div>
-        <div class="labels-wrapper__label">
-          <label>Координата точки G x<input id="gost-x" type="number" /></label>
-        </div>
-        <div class="labels-wrapper__label">
-          <label>Координата точки G y<input id="gost-y" type="number" /></label>
-        </div>
-        <div class="labels-wrapper__label">
           <label
-            >Размер циклической подгруппы n<input id="gost-n" type="number"
+            >Сообщение m<input id="gost-m" type="number" min="-1000000"
           /></label>
         </div>
         <div class="labels-wrapper__label">
-          <label>Координата точки Q u<input id="gost-u" type="number" /></label>
+          <label
+            >Параметр a<input id="gost-a" type="number" min="-1000000"
+          /></label>
         </div>
         <div class="labels-wrapper__label">
-          <label>Координата точки Q v<input id="gost-v" type="number" /></label>
+          <label
+            >Параметр b<input id="gost-b" type="number" min="-1000000"
+          /></label>
         </div>
         <div class="labels-wrapper__label">
-          <label>Случайный параметр k<input id="gost-k" type="number" /></label>
+          <label
+            >Поле p<input id="gost-p" type="number" min="-1000000"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Координата точки G x<input
+              id="gost-x"
+              type="number"
+              min="-1000000"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Координата точки G y<input
+              id="gost-y"
+              type="number"
+              min="-1000000"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Размер циклической подгруппы n<input
+              id="gost-n"
+              type="number"
+              min="-1000000"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Координата точки Q u<input
+              id="gost-u"
+              type="number"
+              min="-1000000"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Координата точки Q v<input
+              id="gost-v"
+              type="number"
+              min="-1000000"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Случайный параметр k<input
+              id="gost-k"
+              type="number"
+              min="-1000000"
+          /></label>
         </div>
       </div>
       <div><button class="getResult" type="submit">Рассчитать</button></div>
@@ -118,19 +171,29 @@
     </h2>
     <form id="secretDiffiMul">
       <div class="labels-wrapper__label">
-        <label>Генератор g<input id="secretDiffiMul-g" type="number" /></label>
-      </div>
-      <div class="labels-wrapper__label">
-        <label>Модуль p<input id="secretDiffiMul-p" type="number" /></label>
-      </div>
-      <div class="labels-wrapper__label">
         <label
-          >Открытый ключ a<input id="secretDiffiMul-a" type="number"
+          >Генератор g<input id="secretDiffiMul-g" type="number" min="-1000000"
         /></label>
       </div>
       <div class="labels-wrapper__label">
         <label
-          >Открытый ключ b<input id="secretDiffiMul-b" type="number"
+          >Модуль p<input id="secretDiffiMul-p" type="number" min="-1000000"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Открытый ключ a<input
+            id="secretDiffiMul-a"
+            type="number"
+            min="-1000000"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Открытый ключ b<input
+            id="secretDiffiMul-b"
+            type="number"
+            min="-1000000"
         /></label>
       </div>
       <div><button class="getResult" type="submit">Рассчитать</button></div>
@@ -149,6 +212,7 @@
           >Координата генератора x<input
             id="secretDiffiEllipse-x"
             type="number"
+            min="-1000000"
         /></label>
       </div>
       <div class="labels-wrapper__label">
@@ -156,29 +220,47 @@
           >Координата генератора y<input
             id="secretDiffiEllipse-y"
             type="number"
+            min="-1000000"
         /></label>
       </div>
       <div class="labels-wrapper__label">
         <label
-          >Параметр кривой u<input id="secretDiffiEllipse-u" type="number"
+          >Параметр кривой u<input
+            id="secretDiffiEllipse-u"
+            type="number"
+            min="-1000000"
         /></label>
       </div>
       <div class="labels-wrapper__label">
         <label
-          >Параметр кривой v<input id="secretDiffiEllipse-v" type="number"
-        /></label>
-      </div>
-      <div class="labels-wrapper__label">
-        <label>Модуль p<input id="secretDiffiEllipse-p" type="number" /></label>
-      </div>
-      <div class="labels-wrapper__label">
-        <label
-          >Открытый ключ a<input id="secretDiffiEllipse-a" type="number"
+          >Параметр кривой v<input
+            id="secretDiffiEllipse-v"
+            type="number"
+            min="-1000000"
         /></label>
       </div>
       <div class="labels-wrapper__label">
         <label
-          >Открытый ключ b<input id="secretDiffiEllipse-b" type="number"
+          >Модуль p<input
+            id="secretDiffiEllipse-p"
+            type="number"
+            min="-1000000"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Открытый ключ a<input
+            id="secretDiffiEllipse-a"
+            type="number"
+            min="-1000000"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Открытый ключ b<input
+            id="secretDiffiEllipse-b"
+            type="number"
+            min="-1000000"
         /></label>
       </div>
       <div><button class="getResult" type="submit">Рассчитать</button></div>
@@ -192,7 +274,9 @@
     </h2>
     <form id="shamir">
       <div class="labels-wrapper__label">
-        <label>Модуль p<input id="shamir-p" type="number" /></label>
+        <label
+          >Модуль p<input id="shamir-p" type="number" min="-1000000"
+        /></label>
       </div>
       <div class="labels-wrapper__label">
         <label
@@ -211,7 +295,9 @@
     </h2>
     <form id="blakely">
       <div class="labels-wrapper__label">
-        <label>Модуль p<input id="blakely-p" type="number" /></label>
+        <label
+          >Модуль p<input id="blakely-p" type="number" min="-1000000"
+        /></label>
       </div>
       <div class="labels-wrapper__label">
         <label
@@ -229,25 +315,51 @@
     </h2>
     <form id="addEllPoints">
       <div class="labels-wrapper__label">
-        <label>Параметр a<input id="addEllPoints-a" type="number" /></label>
+        <label
+          >Параметр a<input id="addEllPoints-a" type="number" min="-1000000"
+        /></label>
       </div>
       <div class="labels-wrapper__label">
-        <label>Параметр b<input id="addEllPoints-b" type="number" /></label>
+        <label
+          >Параметр b<input id="addEllPoints-b" type="number" min="-1000000"
+        /></label>
       </div>
       <div class="labels-wrapper__label">
-        <label>Координата x1<input id="addEllPoints-x1" type="number" /></label>
+        <label
+          >Координата x1<input
+            id="addEllPoints-x1"
+            type="number"
+            min="-1000000"
+        /></label>
       </div>
       <div class="labels-wrapper__label">
-        <label>Координата y1<input id="addEllPoints-y1" type="number" /></label>
+        <label
+          >Координата y1<input
+            id="addEllPoints-y1"
+            type="number"
+            min="-1000000"
+        /></label>
       </div>
       <div class="labels-wrapper__label">
-        <label>Координата x2<input id="addEllPoints-x2" type="number" /></label>
+        <label
+          >Координата x2<input
+            id="addEllPoints-x2"
+            type="number"
+            min="-1000000"
+        /></label>
       </div>
       <div class="labels-wrapper__label">
-        <label>Координата y2<input id="addEllPoints-y2" type="number" /></label>
+        <label
+          >Координата y2<input
+            id="addEllPoints-y2"
+            type="number"
+            min="-1000000"
+        /></label>
       </div>
       <div class="labels-wrapper__label">
-        <label>Поле p<input id="addEllPoints-p" type="number" /></label>
+        <label
+          >Поле p<input id="addEllPoints-p" type="number" min="-1000000"
+        /></label>
       </div>
       <div><button class="getResult" type="submit">Рассчитать</button></div>
       <label class="result"></label>
