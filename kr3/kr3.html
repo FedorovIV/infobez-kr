@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/kr3/kr3.css" />
+    <script src="/shared.js"></script>
+    <script src="/kr3/kr3.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Восстановление значений
+        const inputs = document.querySelectorAll("input");
+        inputs.forEach((input) => {
+          const savedValue = +localStorage.getItem(input.id);
+          if (savedValue) {
+            input.value = savedValue;
+          }
+        });
+
+        // Сохранение значений
+        inputs.forEach((input) => {
+          input.addEventListener("input", function () {
+            localStorage.setItem(input.id, input.value);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Третья контрольная работа</h1>
+    <a href="/index.html">Вторая контрольная работа</a>
+    <h2>
+      Является ли точка (x,y) генератором всей группы точек кривой y^2 = x^3 +
+      ax + b над конечным полем F(p)
+    </h2>
+    <form id="checkPointForGroup">
+      <div class="labels-wrapper">
+        <div class="labels-wrapper__label">
+          <label
+            >Координата x<input id="checkPointForGroup-x" type="number"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Координата y<input id="checkPointForGroup-y" type="number"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Параметр кривой a<input id="checkPointForGroup-a" type="number"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Параметр кривой b<input id="checkPointForGroup-b" type="number"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Поле p<input id="checkPointForGroup-p" type="number" /></label>
+        </div>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result"></label>
+      <div class="solution"></div>
+    </form>
+    <h2>
+      Вычислить электронную подпись сообщения m по схеме ГОСТ Р 34.10-2012.
+      Кривая y<sup>2</sup> = x<sup>3</sup> + ax + b над конечным полем F(p). В
+      качестве генератора используется точка G(x,y), размер циклической
+      подгруппы n. Открытый ключ отправителя сообщения Q(u,v). Для генерации
+      используется случайный параметр k.
+    </h2>
+    <form id="gost">
+      <div class="labels-wrapper">
+        <div class="labels-wrapper__label">
+          <label>Сообщение m<input id="gost-m" type="number" /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Параметр a<input id="gost-a" type="number" /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Параметр b<input id="gost-b" type="number" /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Поле p<input id="gost-p" type="number" /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Координата точки G x<input id="gost-x" type="number" /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Координата точки G y<input id="gost-y" type="number" /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label
+            >Размер циклической подгруппы n<input id="gost-n" type="number"
+          /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Координата точки Q u<input id="gost-u" type="number" /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Координата точки Q v<input id="gost-v" type="number" /></label>
+        </div>
+        <div class="labels-wrapper__label">
+          <label>Случайный параметр k<input id="gost-k" type="number" /></label>
+        </div>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result"></label>
+      <div class="solution"></div>
+    </form>
+    <h2>
+      Сгенерировать секретный сеансовый ключ для Алисы и Боба по протоколу
+      Диффи–Хеллмана для мультпликативной группы. Общие параметры схемы:
+      генератор g и модуль p. Открытые ключи Алисы и Боба равны a и b
+      соответственно
+    </h2>
+    <form id="secretDiffiMul">
+      <div class="labels-wrapper__label">
+        <label>Генератор g<input id="secretDiffiMul-g" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label>Модуль p<input id="secretDiffiMul-p" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Открытый ключ a<input id="secretDiffiMul-a" type="number"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Открытый ключ b<input id="secretDiffiMul-b" type="number"
+        /></label>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result"></label>
+      <div class="solution"></div>
+    </form>
+    <h2>
+      Сгенерировать секретный сеансовый ключ для Алисы и Боба по протоколу Диффи
+      — Хеллмана для группы точек эллептической кривой. Общие параметры схемы:
+      генератор (x; y), кривая 𝑦<sup>2</sup> = 𝑥<sup>3</sup> + u𝑥 + v над полем
+      𝐹(p) . Закрытые ключи Алисы и Боба равны a и b соответственно.
+    </h2>
+    <form id="secretDiffiEllipse">
+      <div class="labels-wrapper__label">
+        <label
+          >Координата генератора x<input
+            id="secretDiffiEllipse-x"
+            type="number"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Координата генератора y<input
+            id="secretDiffiEllipse-y"
+            type="number"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Параметр кривой u<input id="secretDiffiEllipse-u" type="number"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Параметр кривой v<input id="secretDiffiEllipse-v" type="number"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label>Модуль p<input id="secretDiffiEllipse-p" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Открытый ключ a<input id="secretDiffiEllipse-a" type="number"
+        /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Открытый ключ b<input id="secretDiffiEllipse-b" type="number"
+        /></label>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result"></label>
+      <div class="solution"></div>
+    </form>
+    <h2>
+      Секрет был разделён по (3, n)-пороговой схеме Шамира с модулем p. Известны
+      четыре следа – (x1, y1), (x2, y2), (x3, y3), (x4, y4) Восстановить
+      оптимальным способом исходный многочлен и секрет.
+    </h2>
+    <form id="shamir">
+      <div class="labels-wrapper__label">
+        <label>Модуль p<input id="shamir-p" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Введите точки в формате x1 y1, x2 y2, x3 y3, x4 y4<input
+            id="shamir-points"
+        /></label>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result"></label>
+      <div class="solution"></div>
+    </form>
+    <h2>
+      При разделении секрета по (3, n)-пороговой векторной схеме (схеме Блэкли)
+      с модулем p получены 4 следа. Восстановите исходную точку и секрет, если
+      известно, что это первая координата (x) точки.
+    </h2>
+    <form id="blakely">
+      <div class="labels-wrapper__label">
+        <label>Модуль p<input id="blakely-p" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label
+          >Введите след в виде a1 b1 c1 d1, a2 b2 c2 d2 ...<input
+            id="blakely-traces"
+        /></label>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result"></label>
+      <div class="solution"></div>
+    </form>
+    <h2>
+      Сложить две точки на эллептической кривой y^2 = x^3 + ax + b над конечным
+      полем F(p)
+    </h2>
+    <form id="addEllPoints">
+      <div class="labels-wrapper__label">
+        <label>Параметр a<input id="addEllPoints-a" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label>Параметр b<input id="addEllPoints-b" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label>Координата x1<input id="addEllPoints-x1" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label>Координата y1<input id="addEllPoints-y1" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label>Координата x2<input id="addEllPoints-x2" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label>Координата y2<input id="addEllPoints-y2" type="number" /></label>
+      </div>
+      <div class="labels-wrapper__label">
+        <label>Поле p<input id="addEllPoints-p" type="number" /></label>
+      </div>
+      <div><button class="getResult" type="submit">Рассчитать</button></div>
+      <label class="result"></label>
+      <div class="solution"></div>
+    </form>
+  </body>
+</html>

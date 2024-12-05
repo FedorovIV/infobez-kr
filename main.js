@@ -141,13 +141,7 @@ signElGamal.querySelector(".getResult").onclick = (event) => {
   signElGamal.querySelector(".solution").innerHTML = solutionHTML;
 };
 
-function createHTMLFromCalculations(calculations) {
-  let result = "";
-  calculations.forEach((element) => {
-    result += element + "<br>";
-  });
-  return result;
-}
+
 
 const modularExp = document.querySelector("#modularExp");
 modularExp.querySelector(".getResult").onclick = (event) => {
@@ -179,67 +173,4 @@ modularExp.querySelector(".getResult").onclick = (event) => {
   modularExp.querySelector(".solution").innerHTML = solutionHTML ?? '';
 };
 
-function createHTMLFromCalculations(calculations) {
-  let result = "";
-  calculations.forEach((element) => {
-    result += element + "<br>";
-  });
-  return result;
-}
-
-function modularExponentiation(base, exponent, mod) {
-  let result = 1;
-  let calculations = [];
-  base = base % mod;
-
-  while (exponent > 0) {
-    calculations.push(`exponent:${exponent}, base:${base}, result:${result}`);
-    // Если exponent нечетный, умножаем результат на base
-    if (exponent % 2 === 1) {
-      result = (result * base) % mod;
-    }
-    // exponent становится четным
-    exponent = Math.floor(exponent / 2);
-    // Умножаем base на себя
-    base = (base * base) % mod;
-  }
-  calculations.push(`exponent:${exponent}, base:${base}, result:${result}`);
-
-  return { result, calculations };
-}
-
-function getPrimeDivisors(n) {
-  for (let i = 2; i < n; i++) {
-    if (n % i === 0) {
-      let p = i,
-        q = n / i;
-      return { p, q };
-    }
-  }
-}
-
-function extendedGCD(a, b) {
-  if (b === 0) {
-    return { gcd: a, x: 1, y: 0 };
-  }
-
-  const { gcd, x: x1, y: y1 } = extendedGCD(b, a % b);
-
-  const x = y1; // Coefficient for a
-  const y = x1 - Math.floor(a / b) * y1; // Coefficient for b
-
-  return { gcd, x, y };
-}
-
-function getMultiplicativeInverse(a, n) {
-  const { gcd, x } = extendedGCD(a, n);
-  if (gcd !== 1) {
-    throw new Error(
-      `Обратное число не существует, так как GCD(${a}, ${n}) = ${gcd}`
-    );
-  }
-
-  // x может быть отрицательным, поэтому добавляем n, чтобы получить положительный результат.
-  return ((x % n) + n) % n;
-}
 
